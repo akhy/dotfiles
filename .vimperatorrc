@@ -1,0 +1,4 @@
+set gui=nonavigation
+
+nnoremap j 5j
+nnoremap k 5k
