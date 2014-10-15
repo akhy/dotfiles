@@ -2,6 +2,7 @@ execute pathogen#infect()
 syntax on
 syntax enable
 filetype plugin indent on
+colorscheme gruvbox
 set number
 set nocompatible
 set laststatus=2
