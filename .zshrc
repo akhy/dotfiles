@@ -50,3 +50,8 @@ export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
 export PATH=$PATH:$HOME/Android/sdk/platform-tools
 export PATH=$PATH:$HOME/Android/sdk/tools
 
+# clean up duplicate paths
+PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++{if (NR > 1) printf ORS; printf $a[$1]}')
+
+# aliases
+alias filetree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'" 
