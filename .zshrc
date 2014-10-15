@@ -1,13 +1,52 @@
-unsetopt correct_all
+export DOTFILES=$HOME/.dotfiles
 
-# Bin directory
-export PATH=$HOME/.dotfiles/bin:$PATH
+# ANTIGEN
+source $DOTFILES/antigen/antigen.zsh
 
-# Source additional zsh files
-for r in $HOME/.dotfiles/zsh.d/*.zsh; do
-	if [[ $DEBUG > 0 ]]; then
-		echo "zsh: sourcing $r"
-	fi
-	source $r
-done
+# theme
+antigen theme pygmalion
+
+# essential bundles
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-completions
+antigen bundle robbyrussell/oh-my-zsh lib/
+antigen bundle git
+antigen bundle git-flow
+antigen bundle cp
+antigen bundle vi-mode
+antigen bundle rupa/z
+antigen bundle sublime
+
+# development
+antigen bundle adb
+antigen bundle gradle
+
+# osx
+if [[ `uname` == 'Darwin' ]]
+then
+	antigen bundle brew
+	antigen bundle brew-cask
+	antigen bundle osx
+	source $DOTFILES/osx.zsh
+fi
+
+# linux
+if [[ `uname` == 'Linux' ]]
+then
+	source $DOTFILES/linux.zsh
+fi
+
+
+# done
+antigen apply
+
+export EDITOR=vim
+export HISTIGNORE="ls:ll:cd:cd -:pwd:exit:date:* --help"
+
+# environment variables
+export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/sbin:$PATH
+export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
+export PATH=$PATH:$HOME/Android/sdk/platform-tools
+export PATH=$PATH:$HOME/Android/sdk/tools
 
