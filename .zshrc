@@ -43,13 +43,6 @@ antigen apply
 export EDITOR=vim
 export HISTIGNORE="ls:ll:cd:cd -:pwd:exit:date:* --help"
 
-# environment variables
-export PATH=/usr/local/bin:$PATH
-export PATH=/usr/local/sbin:$PATH
-export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
-export PATH=$PATH:$HOME/Android/sdk/platform-tools
-export PATH=$PATH:$HOME/Android/sdk/tools
-
 # clean up duplicate paths
 PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++{if (NR > 1) printf ORS; printf $a[$1]}')
 
