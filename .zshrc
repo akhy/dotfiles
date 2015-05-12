@@ -16,6 +16,7 @@ antigen bundle cp
 antigen bundle vi-mode
 antigen bundle rupa/z
 antigen bundle sublime
+antigen-bundle Tarrasch/zsh-bd
 
 # development
 antigen bundle adb
