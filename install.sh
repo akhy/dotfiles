@@ -1,15 +1,5 @@
 #!/bin/zsh
 
-# Configuring ZSH
-tmp_cur_dir=`pwd`
-dotfiles_path_from_home="`zsh relative.sh $HOME $tmp_cur_dir`"
-zshrc_real="$HOME/.zshrc"
-zshrc_path="$dotfiles_path_from_home/.zshrc"
-zshrc_append="source \"\$HOME/$zshrc_path\""
-grep -q -F "$zshrc_append" $zshrc_real || echo $zshrc_append >> $zshrc_real
-source "$zshrc_real"
-echo "Zsh is configured"
-
 # Configure Git
 git config --global core.editor vim
 git config --global color.ui auto
@@ -41,3 +31,10 @@ git config --global alias.stm 'status --untracked=no'
 git config --global alias.stfu 'status --untracked=no'
 git config --global alias.pullsrb '!git stash save && git pull --rebase && git stash pop && echo "Success!"'
 echo "Git has been configured"
+
+# Configuring ZSH
+dotfiles_path_from_home=$(./relative.sh $HOME `pwd`)
+zshrc_real="$HOME/.zshrc"
+zshrc_append="source \"\$HOME/$dotfiles_path_from_home/.zshrc\""
+grep -q -F "$zshrc_append" $zshrc_real || echo $zshrc_append >> $zshrc_real
+echo "Zsh is configured"
