@@ -1,10 +1,20 @@
-execute pathogen#infect()
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'morhetz/gruvbox'
+Plugin 'tfnico/vim-gradle'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'scrooloose/nerdtree'
+call vundle#end()
+filetype plugin indent on
+
 syntax on
 syntax enable
-filetype plugin indent on
 colorscheme gruvbox
+
 set number
-set nocompatible
 set laststatus=2
 set encoding=utf-8
 set t_Co=256
