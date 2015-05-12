@@ -15,6 +15,8 @@ echo "Vundle has been installed."
 # Configure Git
 git config --global core.editor vim
 git config --global color.ui auto
+git config --global pretty.nice '%C(yellow)%h%C(reset) %C(white)%s%C(cyan)%d%C(reset) -- %an; %ar'
+git config --global alias.lo 'log --pretty=nice'
 git config --global alias.b 'branch'
 git config --global alias.ba 'branch -a'
 git config --global alias.ci 'commit'
