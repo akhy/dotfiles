@@ -2,7 +2,7 @@
 
 # Configuring ZSH
 tmp_cur_dir=`pwd`
-dotfiles_path_from_home="`./relative.sh $HOME $tmp_cur_dir`"
+dotfiles_path_from_home="`zsh relative.sh $HOME $tmp_cur_dir`"
 zshrc_real="$HOME/.zshrc"
 zshrc_path="$dotfiles_path_from_home/.zshrc"
 zshrc_append="source \"\$HOME/$zshrc_path\""

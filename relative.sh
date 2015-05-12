@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # both $1 and $2 are absolute paths beginning with /
 # returns relative path to $2/$target from $1/$source
 source=$1
