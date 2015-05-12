@@ -6,12 +6,14 @@ if [ ! -f antigen.zsh ]; then
 fi
 echo "Zsh-Antigen has been installed."
 
-# Install Plug
-if [ ! -f ~/.vim/autoload/plug.vim ]; then
-	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-fi
-echo "Vim-Plug has been installed."
+# Configuring ZSH
+tmp_cur_dir=`pwd`
+dotfiles_path_from_home="`zsh relative.sh $HOME $tmp_cur_dir`"
+zshrc_real="$HOME/.zshrc"
+zshrc_path="$dotfiles_path_from_home/.zshrc"
+zshrc_append="source \"\$HOME/$zshrc_path\""
+grep -q -F "$zshrc_append" $zshrc_real || echo $zshrc_append >> $zshrc_real
+echo "Zsh configs appended to $zshrc_real"
 
 # Configure Git
 git config --global core.editor vim
@@ -44,13 +46,3 @@ git config --global alias.stm 'status --untracked=no'
 git config --global alias.stfu 'status --untracked=no'
 git config --global alias.pullsrb '!git stash save && git pull --rebase && git stash pop && echo "Success!"'
 echo "Git has been configured"
-
-tmp_cur_dir=`pwd`
-dotfiles_path_from_home="`zsh relative.sh $HOME $tmp_cur_dir`"
-
-# Configuring ZSH
-zshrc_real="$HOME/.zshrc"
-zshrc_path="$dotfiles_path_from_home/.zshrc"
-zshrc_append="source \"\$HOME/$zshrc_path\""
-grep -q -F "$zshrc_append" $zshrc_real || echo $zshrc_append >> $zshrc_real
-echo "Zsh configs appended to $zshrc_real"

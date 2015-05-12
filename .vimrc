@@ -1,6 +1,19 @@
+let s:vim_home = '$HOME/.vim/'
+let plugStatus = 1
+let plugFile = expand('~/.vim/autoload/plug.vim')
+if !filereadable(plugFile)
+    echo "Installing vim-plug..."
+    silent !mkdir -p $HOME/.vim/autoload
+    silent !mkdir -p $HOME/.vim/plugged
+    silent !curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim
+    let plugStatus = 0
+endif
+
 set nocompatible
 
 call plug#begin('~/.vim/plugged')
+let g:plug_threads = 4
+let g:plug_timeout = 3600
 " Essentials
 Plug 'vitalk/vim-shebang'
 Plug 'morhetz/gruvbox'
@@ -17,6 +30,12 @@ Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
 Plug 'nginx.vim', { 'for': 'nginx' }
 call plug#end()
+
+if plugStatus == 0
+    echo "Installing Bundles"
+    echo ""
+    :PlugInstall
+endif
 
 syntax on
 syntax enable
