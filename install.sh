@@ -45,7 +45,7 @@ git config --global alias.pullsrb '!git stash save && git pull --rebase && git s
 echo "Git has been configured"
 
 tmp_cur_dir=`pwd`
-dotfiles_path_from_home="`./relative.sh $HOME $tmp_cur_dir`"
+dotfiles_path_from_home="`zsh relative.sh $HOME $tmp_cur_dir`"
 
 # Configuring ZSH
 zshrc_real="$HOME/.zshrc"
