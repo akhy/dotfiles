@@ -4,13 +4,14 @@
 if [ ! -f antigen.zsh ]; then
 	curl -L https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > antigen.zsh
 fi
-echo "Antigen has been installed."
+echo "Zsh-Antigen has been installed."
 
-# Install Vundle
-if [ ! -e ~/.vim/bundle/Vundle.vim ]; then
-	git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+# Install Plug
+if [ ! -f ~/.vim/autoload/plug.vim ]; then
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
-echo "Vundle has been installed."
+echo "Vim-Plug has been installed."
 
 # Configure Git
 git config --global core.editor vim
@@ -52,4 +53,4 @@ zshrc_real="$HOME/.zshrc"
 zshrc_path="$dotfiles_path_from_home/.zshrc"
 zshrc_append="source \"\$HOME/$zshrc_path\""
 grep -q -F "$zshrc_append" $zshrc_real || echo $zshrc_append >> $zshrc_real
-echo "Added ZSH configuration to $zshrc_real"
+echo "Zsh configs appended to $zshrc_real"
