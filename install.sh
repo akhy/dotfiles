@@ -1,19 +1,14 @@
-#!/bin/sh
-
-# Install Antigen
-if [ ! -f antigen.zsh ]; then
-	curl -L https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > antigen.zsh
-fi
-echo "Zsh-Antigen has been installed."
+#!/bin/zsh
 
 # Configuring ZSH
 tmp_cur_dir=`pwd`
-dotfiles_path_from_home="`zsh relative.sh $HOME $tmp_cur_dir`"
+dotfiles_path_from_home="`./relative.sh $HOME $tmp_cur_dir`"
 zshrc_real="$HOME/.zshrc"
 zshrc_path="$dotfiles_path_from_home/.zshrc"
 zshrc_append="source \"\$HOME/$zshrc_path\""
 grep -q -F "$zshrc_append" $zshrc_real || echo $zshrc_append >> $zshrc_real
-echo "Zsh configs appended to $zshrc_real"
+source "$zshrc_real"
+echo "Zsh is configured"
 
 # Configure Git
 git config --global core.editor vim

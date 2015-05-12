@@ -1,6 +1,10 @@
 export DOTFILES=$HOME/.dotfiles
 
-# ANTIGEN
+# Install Antigen
+if [ ! -f $DOTFILES/antigen.zsh ]; then
+	curl -L https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > $DOTFILES/antigen.zsh
+	echo "Zsh-Antigen has been installed."
+fi
 source $DOTFILES/antigen.zsh
 
 # theme
@@ -16,7 +20,7 @@ antigen bundle cp
 antigen bundle vi-mode
 antigen bundle rupa/z
 antigen bundle sublime
-antigen-bundle Tarrasch/zsh-bd
+antigen bundle Tarrasch/zsh-bd
 
 # development
 antigen bundle adb
