@@ -1,7 +1,7 @@
 export DOTFILES=$HOME/.dotfiles
 
 # ANTIGEN
-source $DOTFILES/antigen/antigen.zsh
+source $DOTFILES/antigen.zsh
 
 # theme
 antigen theme pygmalion
