@@ -71,3 +71,10 @@ set nowrap       "Don't wrap lines
 set linebreak    "Wrap lines at convenient points
 
 au BufRead,BufNewFile */nginx.conf,/etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif
+
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+" Enable powerline fonts
+let g:airline_powerline_fonts = 1
