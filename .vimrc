@@ -15,14 +15,19 @@ call plug#begin('~/.vim/plugged')
 let g:plug_threads = 4
 let g:plug_timeout = 3600
 " Essentials
+Plug 'ervandew/supertab'
+Plug 'Lokaltog/vim-easymotion'
 Plug 'vitalk/vim-shebang'
-Plug 'morhetz/gruvbox'
 Plug 'bling/vim-airline'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'godlygeek/tabular'
+Plug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs'
+Plug 'morhetz/gruvbox'
 " File types
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'groovy.vim', { 'for': 'groovy' }
 Plug 'tfnico/vim-gradle', { 'for': 'groovy' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
