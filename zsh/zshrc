@@ -1,0 +1,21 @@
+# Shell configuration
+export EDITOR=vim
+export HISTIGNORE="ls:ll:cd:cd -:pwd:exit:date:* --help"
+
+# Paths configuration
+export DOTFILES=$HOME/.dotfiles
+export PATH=$PATH:$DOTFILES/bin
+
+# Additional configurations
+source $DOTFILES/zsh/bootstrap.zsh
+for file ($DOTFILES/zsh/plugins/*.zsh); do
+    source $file
+done
+unset file
+
+
+# aliases
+alias filetree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'"
+
+# clean up duplicate paths
+PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++{if (NR > 1) printf ORS; printf $a[$1]}')

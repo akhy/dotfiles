@@ -1,10 +1,14 @@
-export DOTFILES=$HOME/.dotfiles
+#
+# load all required zsh plugins
+#
 
-# Antigen
-source $DOTFILES/antigen.zsh
-
-# theme
-antigen theme pygmalion
+# install and source antigen
+antigen_file=$DOTFILES/zsh/antigen.zsh
+if [ ! -f $antigen_file ]; then
+	curl -L https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > $antigen_file
+	echo "Zsh Antigen has been installed."
+fi
+source $antigen_file
 
 # essential bundles
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -14,7 +18,6 @@ antigen bundle git
 antigen bundle git-flow
 antigen bundle cp
 antigen bundle vi-mode
-antigen bundle rupa/z
 antigen bundle sublime
 antigen bundle Tarrasch/zsh-bd
 
@@ -22,30 +25,22 @@ antigen bundle Tarrasch/zsh-bd
 antigen bundle adb
 antigen bundle gradle
 
+# theme
+antigen theme pygmalion
+
 # osx
 if [[ `uname` == 'Darwin' ]]
 then
 	antigen bundle brew
 	antigen bundle brew-cask
 	antigen bundle osx
-	source $DOTFILES/osx.zsh
 fi
 
 # linux
 if [[ `uname` == 'Linux' ]]
 then
-	source $DOTFILES/linux.zsh
+	# TODO add linux specific plugins here
 fi
-
 
 # done
 antigen apply
-
-export EDITOR=vim
-export HISTIGNORE="ls:ll:cd:cd -:pwd:exit:date:* --help"
-
-# clean up duplicate paths
-PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++{if (NR > 1) printf ORS; printf $a[$1]}')
-
-# aliases
-alias filetree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'" 

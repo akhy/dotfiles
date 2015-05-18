@@ -32,15 +32,8 @@ git config --global alias.stfu 'status --untracked=no'
 git config --global alias.pullsrb '!git stash save && git pull --rebase && git stash pop && echo "Success!"'
 echo "Git has been configured"
 
-# Install Antigen
-if [ ! -f antigen.zsh ]; then
-	curl -L https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > antigen.zsh
-fi
-echo "Zsh Antigen has been installed."
-
 # Configuring ZSH
-dotfiles_path_from_home=$(./relative.sh $HOME `pwd`)
 zshrc_real="$HOME/.zshrc"
-zshrc_append="source \"\$HOME/$dotfiles_path_from_home/.zshrc\""
+zshrc_append="source \"\$HOME/.dotfiles/zsh/zshrc\""
 grep -q -F "$zshrc_append" $zshrc_real || echo $zshrc_append >> $zshrc_real
-echo "Zsh is configured."
+echo "Zsh has been configured."
