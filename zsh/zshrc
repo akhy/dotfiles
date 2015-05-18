@@ -9,7 +9,7 @@ export PATH=$PATH:$DOTFILES/bin
 # Additional configurations
 source $DOTFILES/zsh/bootstrap.zsh
 for file ($DOTFILES/zsh/plugins/*.zsh); do
-    source $file
+  source $file
 done
 unset file
 
