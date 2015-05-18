@@ -2,45 +2,57 @@
 # load all required zsh plugins
 #
 
-# install and source antigen
-antigen_file=$DOTFILES/zsh/antigen.zsh
-if [ ! -f $antigen_file ]; then
-	curl -L https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > $antigen_file
-	echo "Zsh Antigen has been installed."
+# install and source zgen
+zgen_file=$DOTFILES/zsh/zgen.zsh
+if [ ! -f $zgen_file ]; then
+	curl -L https://github.com/tarjoilija/zgen/raw/master/zgen.zsh > $zgen_file
+	echo "zgen has been installed."
 fi
-source $antigen_file
+source $zgen_file
 
-# essential bundles
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-completions
-antigen bundle robbyrussell/oh-my-zsh lib/
-antigen bundle git
-antigen bundle git-flow
-antigen bundle cp
-antigen bundle vi-mode
-antigen bundle sublime
-antigen bundle Tarrasch/zsh-bd
+zgen_load () {
+	if ! zgen saved; then
+		echo "creating a zgen save."
 
-# development
-antigen bundle adb
-antigen bundle gradle
+		# essential
+		zgen load zsh-users/zsh-syntax-highlighting
+		zgen load zsh-users/zsh-completions src
+		zgen load Tarrasch/zsh-bd
+		zgen oh-my-zsh
+		zgen oh-my-zsh plugins/git
+		zgen oh-my-zsh plugins/git-flow
+		zgen oh-my-zsh plugins/cp
+		zgen oh-my-zsh plugins/vi-mode
+		zgen oh-my-zsh plugins/sublime
 
-# theme
-antigen theme pygmalion
+		# development
+		zgen oh-my-zsh plugins/adb
+		zgen oh-my-zsh plugins/gradle
 
-# osx
-if [[ `uname` == 'Darwin' ]]
-then
-	antigen bundle brew
-	antigen bundle brew-cask
-	antigen bundle osx
-fi
+		# theme
+		zgen oh-my-zsh themes/pygmalion
 
-# linux
-if [[ `uname` == 'Linux' ]]
-then
-	# TODO add linux specific plugins here
-fi
+		# osx
+		if [[ `uname` == 'Darwin' ]]
+		then
+			zgen oh-my-zsh plugins/brew
+			zgen oh-my-zsh plugins/brew-cask
+			zgen oh-my-zsh plugins/osx
+		fi
 
-# done
-antigen apply
+		# linux
+		if [[ `uname` == 'Linux' ]]
+		then
+			# TODO add linux specific plugins here
+		fi
+
+		zgen save
+	fi
+}
+
+zgen_reload () {
+	rm $HOME/.zgen/init.zsh
+	zgen_load
+}
+
+zgen_load
