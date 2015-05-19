@@ -10,6 +10,7 @@ if !filereadable(plugFile)
 endif
 
 set nocompatible
+set mouse=a
 
 call plug#begin('~/.vim/plugged')
 let g:plug_threads = 4
