@@ -19,8 +19,10 @@ zgen_load () {
     zgen load zsh-users/zsh-completions src
     zgen load Tarrasch/zsh-bd
     zgen oh-my-zsh
+    zgen oh-my-zsh plugins/zsh_reload
     zgen oh-my-zsh plugins/git
-    zgen oh-my-zsh plugins/git-flow
+    zgen oh-my-zsh plugins/git-hubflow
+    #zgen oh-my-zsh plugins/git-flow
     zgen oh-my-zsh plugins/cp
     zgen oh-my-zsh plugins/vi-mode
     zgen oh-my-zsh plugins/sublime
@@ -28,6 +30,9 @@ zgen_load () {
     # development
     zgen oh-my-zsh plugins/adb
     zgen oh-my-zsh plugins/gradle
+    zgen oh-my-zsh plugins/composer
+    zgen oh-my-zsh plugins/node
+    zgen oh-my-zsh plugins/npm
 
     # theme
     zgen oh-my-zsh themes/pygmalion
