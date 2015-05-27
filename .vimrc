@@ -28,6 +28,7 @@ Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'morhetz/gruvbox'
 " File types
+Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'groovy.vim', { 'for': 'groovy' }
 Plug 'tfnico/vim-gradle', { 'for': 'groovy' }
