@@ -47,6 +47,10 @@ syntax on
 syntax enable
 colorscheme gruvbox
 
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
+
 set number
 set laststatus=2
 set encoding=utf-8
