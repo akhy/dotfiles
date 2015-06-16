@@ -26,6 +26,7 @@ zgen_load () {
     zgen oh-my-zsh plugins/cp
     zgen oh-my-zsh plugins/vi-mode
     zgen oh-my-zsh plugins/sublime
+    zgen load supercrabtree/k
 
     # development
     zgen oh-my-zsh plugins/adb
