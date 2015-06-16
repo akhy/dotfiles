@@ -1,0 +1,29 @@
+- clean: ['~', '~/.vimperator', '~/.ncmpcpp']
+
+- link:
+    ~/.vimrc:
+        relink: true
+        path: rc/vim/vimrc
+    ~/.tmux.conf:
+        relink: true
+        path: rc/tmux/tmux.conf
+    ~/.ncmpcpp/bindings:
+        relink: true
+        path: rc/ncmpcpp/bindings
+    ~/.ncmpcpp/config:
+        relink: true
+        path: rc/ncmpcpp/config
+    ~/.vimperatorrc:
+        relink: true
+        path: rc/vimperator/vimperatorrc
+    ~/.vimperator/colors:
+        relink: true
+        path: rc/vimperator/colors/
+    ~/.vimperator/plugin:
+        relink: true
+        path: rc/vimperator/plugin/
+
+- shell:
+    - ["install.d/composer.sh", "Downloading composer"]
+    - ["install.d/git-alias.sh", "Setting up git aliases"]
+

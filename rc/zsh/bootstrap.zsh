@@ -3,7 +3,7 @@
 #
 
 # install and source zgen
-zgen_file=$DOTFILES/zsh/zgen.zsh
+zgen_file=$DOTFILES_ZSH_ROOT/zgen.zsh
 if [ ! -f $zgen_file ]; then
   curl -L https://github.com/tarjoilija/zgen/raw/master/zgen.zsh > $zgen_file
   echo "zgen has been installed."

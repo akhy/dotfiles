@@ -31,9 +31,3 @@ git config --global alias.st 'status'
 git config --global alias.stm 'status --untracked=no'
 git config --global alias.stfu 'status --untracked=no'
 git config --global alias.pullsrb '!git stash save && git pull --rebase && git stash pop && echo "Success!"'
-
-# Configuring ZSH
-echo "configuring zsh..."
-zshrc_real="$HOME/.zshrc"
-zshrc_append="source \"\$HOME/.dotfiles/zsh/zshrc\""
-grep -q -F "$zshrc_append" $zshrc_real || echo $zshrc_append >> $zshrc_real

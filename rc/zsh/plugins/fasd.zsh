@@ -1,6 +1,6 @@
 if ! type "fasd" > /dev/null; then
-  curl -L https://github.com/clvv/fasd/raw/master/fasd > $DOTFILES/bin/fasd
-  chmod +x $DOTFILES/bin/fasd
+  curl -L https://github.com/clvv/fasd/raw/master/fasd > $DOTFILES_ROOT/bin/fasd
+  chmod +x $DOTFILES_ROOT/bin/fasd
   echo "FASD has been installed"
 fi
 
