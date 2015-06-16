@@ -16,6 +16,8 @@ call plug#begin('~/.vim/plugged')
 let g:plug_threads = 4
 let g:plug_timeout = 3600
 " Essentials
+Plug 'tpope/vim-sensible'
+Plug 'kien/ctrlp.vim'
 Plug 'ervandew/supertab'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'vitalk/vim-shebang'
@@ -26,7 +28,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
-Plug 'morhetz/gruvbox'
+Plug 'altercation/vim-colors-solarized'
 " File types
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
@@ -46,11 +48,11 @@ endif
 
 syntax on
 syntax enable
-colorscheme gruvbox
+colorscheme solarized
 
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
-set showmode
+"set showmode
 
 set number
 set laststatus=2
@@ -84,3 +86,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 " Enable powerline fonts
 let g:airline_powerline_fonts = 1
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:airline_theme = 'molokai'
+let g:airline_extensions = [  ] 
