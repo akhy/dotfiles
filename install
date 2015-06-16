@@ -15,3 +15,5 @@ git submodule update --init --recursive "${DOTBOT_DIR}"
 
 echo "Add this line to your .zshrc:"
 echo "  source $(pwd)/rc/zsh/zshrc"
+echo "Add this line to your .profile:"
+echo "  eval \"\$(rbenv init -)\""

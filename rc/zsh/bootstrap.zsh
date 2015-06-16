@@ -17,12 +17,12 @@ zgen_load () {
     # essential
     zgen load zsh-users/zsh-syntax-highlighting
     zgen load zsh-users/zsh-completions src
+    zgen load sharat87/zsh-vim-mode
     zgen load Tarrasch/zsh-bd
     zgen oh-my-zsh
     zgen oh-my-zsh plugins/zsh_reload
     zgen oh-my-zsh plugins/git
     zgen oh-my-zsh plugins/git-hubflow
-    #zgen oh-my-zsh plugins/git-flow
     zgen oh-my-zsh plugins/cp
     zgen oh-my-zsh plugins/vi-mode
     zgen oh-my-zsh plugins/sublime
