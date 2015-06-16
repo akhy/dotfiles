@@ -1,9 +1,8 @@
 dotfiles
 ========
 
-My collection of dotfiles.
+My collection of dotfiles for zsh, vim, tmux, and many more.
 
 ```
-git submodule update --init --recursive dotbot
 ./install
 ```
