@@ -28,6 +28,7 @@ zgen_load () {
     zgen oh-my-zsh plugins/composer
     zgen oh-my-zsh plugins/node
     zgen oh-my-zsh plugins/npm
+    zgen oh-my-zsh plugins/rbenv
 
     # theme
     zgen load mafredri/zsh-async
