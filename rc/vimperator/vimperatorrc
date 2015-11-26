@@ -1,5 +1,6 @@
 set titlestring="Vimperator"
 set gui=nonavigation
+set defsearch=ddg
 
 " don't auto switch to newly opened tabs
 set activate-=tabopen
@@ -36,8 +37,11 @@ cd ~/Downloads
 command! sourcerc :source ~/.vimperatorrc
 
 " Pass through all keys (like CTRL-Z) on Gmail and Google Reader:
-autocmd LocationChange .* :js modes.passAllKeys = /mail\.google\.com|www\.google\.com\/reader\/view/.test(buffer.URL)
+autocmd LocationChange .* :js modes.passAllKeys = /docs\.google\.com|mail\.google\.com|www\.google\.com\/reader\/view/.test(buffer.URL)
 
 colorscheme default
+
+" uBlock popup workaround
+style -name ublick * #nav-bar * { visibility: visible; }
 
 echomsg "はじめましょ！"
