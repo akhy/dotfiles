@@ -12,10 +12,6 @@ cd ~/.dotfiles
 ./install
 ```
 
-If you forget `--recursive` when cloning:
+## Included commands
 
-```
-cd ~/.dotfiles
-./tools-init
-```
-
+*WIP*
