@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# initialize all submodules to their tracked state
+git submodule update --init --recursive

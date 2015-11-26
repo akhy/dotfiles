@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 
-set -e
+./tools/init
 
+# Start installing Dotbot
+
+set -e
 CONFIG="install.conf.yml"
-DOTBOT_DIR="dotbot"
+DOTBOT_DIR="tools/dotbot"
 
 DOTBOT_BIN="bin/dotbot"
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -12,8 +15,3 @@ cd "${BASEDIR}"
 git submodule update --init --recursive "${DOTBOT_DIR}"
 
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
-
-echo "Add this line to your .zshrc:"
-echo "  source $(pwd)/rc/zsh/zshrc"
-echo "Add this line to your .profile:"
-echo "  eval \"\$(rbenv init -)\""

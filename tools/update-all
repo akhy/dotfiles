@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# update all tools to latest upstream version
+git submodule update --remote tools/dotbot
+git submodule update --remote tools/zgen
+git submodule update --remote tools/fasd

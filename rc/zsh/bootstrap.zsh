@@ -2,13 +2,8 @@
 # load all required zsh plugins
 #
 
-# install and source zgen
-zgen_file=$DOTFILES_ZSH_ROOT/zgen.zsh
-if [ ! -f $zgen_file ]; then
-  curl -L https://github.com/tarjoilija/zgen/raw/master/zgen.zsh > $zgen_file
-  echo "zgen has been installed."
-fi
-source $zgen_file
+# source zgen
+source $DOTFILES_ROOT/tools/zgen/zgen.zsh
 
 zgen_load () {
   if ! zgen saved; then
@@ -19,6 +14,7 @@ zgen_load () {
     zgen load zsh-users/zsh-completions src
     zgen load sharat87/zsh-vim-mode
     zgen load Tarrasch/zsh-bd
+
     zgen oh-my-zsh
     zgen oh-my-zsh plugins/zsh_reload
     zgen oh-my-zsh plugins/git
@@ -52,12 +48,15 @@ zgen_load () {
       # TODO add linux specific plugins here
     fi
 
+    # windows
+    # THERE IS NO WINDOWS!
+
     zgen save
   fi
 }
 
 zgen_reload () {
-  rm $HOME/.zgen/init.zsh
+  zgen reset
   zgen_load
 }
 
