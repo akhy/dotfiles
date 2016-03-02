@@ -38,6 +38,9 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
 Plug 'nginx.vim', { 'for': 'nginx' }
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+" Extras
+Plug 'wakatime/vim-wakatime'
 call plug#end()
 
 if plugStatus == 0
