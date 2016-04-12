@@ -42,6 +42,6 @@ autocmd LocationChange .* :js modes.passAllKeys = /docs\.google\.com|mail\.googl
 colorscheme default
 
 " uBlock popup workaround
-style -name ublick * #nav-bar * { visibility: visible; }
+" style -name ublick * #nav-bar * { visibility: visible; }
 
 echomsg "はじめましょ！"

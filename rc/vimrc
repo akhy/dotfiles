@@ -29,6 +29,7 @@ Plug 'godlygeek/tabular'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
 " File types
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
@@ -51,7 +52,8 @@ endif
 
 syntax on
 syntax enable
-colorscheme solarized
+colorscheme gruvbox
+let g:gruvbox_contrast_dark = 'hard'
 
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
@@ -84,16 +86,16 @@ set linebreak    "Wrap lines at convenient points
 au BufRead,BufNewFile */nginx.conf,/etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif
 
 " Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
+"let g:airline#extensions#tabline#fnamemod = ':t'
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-let g:airline_theme = 'simple'
+"let g:airline_theme = 'simple'
 let g:airline_extensions = [  ]
 
-let g:airline_powerline_fonts = 0
+"let g:airline_powerline_fonts = 0
 let g:airline_left_sep = ""
 let g:airline_right_sep = ""
 let g:airline_left_alt_sep = ""
