@@ -1,0 +1,21 @@
+---
+- name: global config
+  git_config: scope=global name={{ item.name }} value={{ item.value }}
+  with_items:
+  - name: core.editor
+    value: vim
+  - name: color.ui
+    value: auto
+  - name: pretty.nice
+    value: '%C(yellow)%h%C(reset) %C(white)%s%C(cyan)%d%C(reset) -- %an; %ar'
+
+- name: global identity
+  git_config: scope=global name={{ item.name }} value={{ item.value }}
+  with_items:
+  - name: user.name
+    value: "{{ git_name }}"
+  - name: user.email
+    value: "{{ git_email }}"
+
+- include: aliases.yml
+  tags: slow
