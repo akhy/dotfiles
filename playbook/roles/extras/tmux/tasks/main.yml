@@ -1,0 +1,28 @@
+---
+
+- include: install_{{ ansible_os_family | lower }}.yml
+
+- name: config file
+  copy:
+    src: files/tmux.conf
+    dest: "{{ dotfiles_root }}/tmux.conf"
+
+- name: config link
+  file:
+    src: "{{ dotfiles_root }}/tmux.conf"
+    dest: ~/.tmux.conf
+    state: link
+
+- name: zsh plugin
+  copy:
+    content: zgen oh-my-zsh plugins/tmux
+    dest: "{{ zgen_modules_dir }}/tmux.zsh"
+  when: zgen_modules_dir is defined
+
+- name: autostart
+  lineinfile:
+    name: ~/.zshenv
+    line: export ZSH_TMUX_AUTOSTART={{ tmux_autostart | lower}}
+    state: present
+    create: yes
+  when: zgen_modules_dir is defined

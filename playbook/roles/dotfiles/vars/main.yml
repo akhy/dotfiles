@@ -1,0 +1,3 @@
+---
+dotfiles_bin: "{{ dotfiles_root }}/bin"
+dotfiles_tools: "{{ dotfiles_root }}/tools"

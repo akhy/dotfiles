@@ -1,0 +1,19 @@
+#!/bin/zsh
+
+# ANSIBLE generated file
+
+# Shell configuration
+export EDITOR=vim
+export HISTIGNORE="ls:ll:cd:cd -:pwd:exit:date:* --help"
+
+# Paths configuration
+export PATH="{{ dotfiles_bin | replace('~', '$HOME') }}:$PATH"
+
+# Sourcing plugins
+for file ({{ zsh_modules_dir }}/*.zsh); do
+  source $file
+done
+unset file
+
+# clean up duplicate paths
+export PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++{if (NR > 1) printf ORS; printf $a[$1]}')

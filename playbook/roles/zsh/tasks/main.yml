@@ -1,0 +1,20 @@
+---
+- include: install_{{ ansible_os_family | lower }}.yml
+
+- name: zsh.d
+  file: path={{ zsh_modules_dir }} state=directory recurse=yes
+
+- name: zsh.d placeholder
+  copy: dest={{ zsh_modules_dir }}/_.zsh content=''
+
+- name: config file
+  template:
+    src: zshrc
+    dest: "{{ dotfiles_root }}/zshrc"
+
+- name: config loader
+  lineinfile:
+    name: ~/.zshrc
+    line: source {{ dotfiles_root }}/zshrc
+    state: present
+    create: yes

@@ -1,0 +1,2 @@
+---
+zsh_modules_dir: "{{ dotfiles_root }}/zsh.d"

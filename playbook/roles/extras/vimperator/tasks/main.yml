@@ -1,0 +1,11 @@
+---
+- name: config file
+  copy:
+    src: files/vimperatorrc
+    dest: "{{ dotfiles_root }}/vimperatorrc"
+
+- name: config link
+  file:
+    src: "{{ dotfiles_root }}/vimperatorrc"
+    dest: ~/.vimperatorrc
+    state: link

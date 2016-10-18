@@ -1,0 +1,5 @@
+---
+- name: zgen-source
+  shell: "{{ zgen_source_cmd }}"
+  args:
+    warn: no
