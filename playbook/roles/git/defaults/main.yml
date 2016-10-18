@@ -1,0 +1,3 @@
+---
+git_email_personal: "{{ git_email }}"
+git_email_work: "{{ git_email }}"

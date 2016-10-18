@@ -17,5 +17,16 @@
   - name: user.email
     value: "{{ git_email }}"
 
+- name: email switcher
+  git_config:
+    scope: global
+    name: alias.{{ item.type }}
+    value: config user.email {{ item.email }}
+  with_items:
+  - type: personal
+    email: "{{ git_email_personal }}"
+  - type: work
+    email: "{{ git_email_work }}"
+
 - include: aliases.yml
   tags: slow
