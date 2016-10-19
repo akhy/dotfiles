@@ -18,6 +18,7 @@
     content: zgen oh-my-zsh plugins/tmux
     dest: "{{ zgen_modules_dir }}/tmux.zsh"
   when: zgen_modules_dir is defined
+  notify: zgen-source
 
 - name: autostart
   lineinfile:
@@ -26,3 +27,4 @@
     state: present
     create: yes
   when: zgen_modules_dir is defined
+  notify: zgen-source
