@@ -9,3 +9,25 @@
     src: "{{ dotfiles_root }}/vimperatorrc"
     dest: ~/.vimperatorrc
     state: link
+
+- name: config directory
+  file: path={{ item }} state=directory
+  with_items:
+  - "~/.vimperator"
+  - "~/.vimperator/plugin"
+  - "~/.vimperator/colors"
+  - "{{ dotfiles_root }}/vimperator"
+
+- name: plugin repositories
+  git:
+    repo: "{{ item.git_url }}"
+    dest: "{{ vimperator_plugins_dir }}/{{ item.name }}"
+    version: master
+    update: no
+  with_items: "{{ vimperator_plugins }}"
+
+- include: link_plugins.yml
+  vars:
+    plugin_dir: "{{ item.name }}"
+    plugin_files: "{{ item.files }}"
+  with_items: "{{ vimperator_plugins }}"
