@@ -1,0 +1,4 @@
+---
+- name: package present
+  become: yes
+  pacman: name=tmux state=present
