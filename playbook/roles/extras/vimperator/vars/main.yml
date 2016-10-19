@@ -9,7 +9,7 @@ vimperator_plugins:
   files:
   - tabsort.js
   - uaSwitchLite.js
-- name: akhyrul/vimperator-pinboard
-  git_url: https://github.com/akhyrul/vimperator-pinboard.git
+- name: akhy/vimperator-pinboard
+  git_url: https://github.com/akhy/vimperator-pinboard.git
   files:
   - pinboard.js
