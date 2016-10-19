@@ -1,5 +1,5 @@
 ---
-- name: plugin links
+- name: plugin links {{ plugin_dir }}
   file:
     src: "{{ vimperator_plugins_dir }}/{{ plugin_dir }}/{{ plugin_file }}"
     dest: "~/.vimperator/plugin/{{ plugin_file }}"
