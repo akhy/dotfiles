@@ -9,3 +9,44 @@
     src: "{{ dotfiles_root }}/vimperatorrc"
     dest: ~/.vimperatorrc
     state: link
+
+- name: config directory
+  file: path={{ item }} state=directory
+  with_items:
+  - "~/.vimperator"
+  - "~/.vimperator/plugin"
+  - "~/.vimperator/colors"
+  - "{{ dotfiles_root }}/vimperator"
+
+- name: plugin files copy
+  copy:
+    src: "{{ item }}"
+    dest: "{{ vimperator_plugins_dir }}/plugin.d/"
+  with_fileglob:
+  - plugin/*.js
+
+- name: plugin files listing
+  set_fact:
+    vimperator_plugins: >-
+      {{
+        vimperator_plugins + [{
+          'name': 'plugin.d',
+          'files': [item.split('/')[-1]]
+          }]
+      }}
+  with_lines: ls {{ vimperator_plugins_dir }}/plugin.d/*.js
+
+- name: plugin repositories
+  git:
+    repo: "{{ item.git_url }}"
+    dest: "{{ vimperator_plugins_dir }}/{{ item.name }}"
+    version: master
+    update: no
+  with_items: "{{ vimperator_plugins }}"
+  when: item.git_url is defined
+
+- include: link_plugins.yml
+  vars:
+    plugin_dir: "{{ item.name }}"
+    plugin_files: "{{ item.files }}"
+  with_items: "{{ vimperator_plugins }}"
