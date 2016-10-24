@@ -8,10 +8,10 @@ Provision **my** dotfiles in any host (local or remote) using ansible playbook.
 
 ### roles
 
-- **zsh** (with `oh-my-zsh`, loaded by `zgen`)
+- **zsh** (with `prezto`, loaded by `zgen`)
 - **vim** (plugin manager is using `Plug`)
 - **extras**
-  - **tmux** (with autostart provided by `oh-my-zsh` plugin)
+  - **tmux** (with autostart provided by plugin)
   - **fasd** - fast directory switching
   - **vimperator** - vim on firefox
   - **wakatime** - for recording coding activity
