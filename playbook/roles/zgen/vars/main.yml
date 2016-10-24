@@ -1,4 +1,3 @@
 ---
 zgen_dir: "{{ dotfiles_tools }}/zgen"
-zgen_modules_dir: "{{ dotfiles_root }}/zgen.d"
 zgen_source_cmd: rm -f ~/.zgen/init.zsh && zsh {{ zsh_modules_dir }}/_zgen.zsh

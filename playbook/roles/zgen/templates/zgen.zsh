@@ -5,28 +5,25 @@ source {{ zgen_dir }}/zgen.zsh
 if ! zgen saved; then
     echo "creating a zgen save."
 
-    # essential
-    zgen load zsh-users/zsh-syntax-highlighting
-    zgen load zsh-users/zsh-completions src
+    if [[ `uname` == "Darwin" ]]; then
+        zgen prezto homebrew
+        zgen prezto osx
+    elif [[ `uname` == "Linux" ]]; then
+        # nothing
+    fi
+
+    zgen load willghatch/zsh-saneopt
+    zgen load docker/docker contrib/completion/zsh
     zgen load Tarrasch/zsh-bd
+    zgen load supercrabtree/k
+    zgen load hcgraf/zsh-sudo
+    zgen load sharat87/zsh-vim-mode
 
-    zgen oh-my-zsh
-    zgen oh-my-zsh plugins/sudo
-    zgen oh-my-zsh plugins/tig
-    zgen oh-my-zsh plugins/zsh_reload
-    zgen oh-my-zsh plugins/history
-    zgen oh-my-zsh plugins/git-extras
-    zgen oh-my-zsh plugins/cp
-    zgen oh-my-zsh plugins/vi-mode
-
-    for file ({{ zgen_modules_dir }}/*.zsh); do
-      source $file
-    done
-    unset file
-
-    # theme
-    zgen load mafredri/zsh-async
-    zgen load sindresorhus/pure
+    zgen prezto tmux
+    zgen prezto archive
+    zgen prezto utility
+    zgen prezto history-substring-search
+    zgen prezto
 
     zgen save
 fi
