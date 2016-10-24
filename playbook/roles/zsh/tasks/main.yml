@@ -7,14 +7,25 @@
 - name: zsh.d placeholder
   copy: dest={{ zsh_modules_dir }}/_.zsh content=''
 
-- name: config file
+- name: zshrc
   template:
     src: zshrc
     dest: "{{ dotfiles_root }}/zshrc"
 
-- name: config loader
+- name: zshrc loader
   lineinfile:
     name: ~/.zshrc
-    line: source {{ dotfiles_root }}/zshrc
+    line: source {{ dotfiles_root | replace('~', '$HOME') }}/zshrc
     state: present
     create: yes
+
+- name: zpreztorc
+  copy:
+    content: zstyle ':prezto:module:prompt' theme '{{ prezto_theme }}'
+    dest: "{{ dotfiles_root }}/zpreztorc"
+
+- name: zpreztorc symlink
+  file:
+    src: "{{ dotfiles_root }}/zpreztorc"
+    dest: ~/.zpreztorc
+    state: link
