@@ -24,8 +24,13 @@
     state: present
     create: yes
 
-- name: zshrc.d
+- name: sync files
   synchronize:
-    src: zshrc.d
+    src: "{{ item.dir }}"
     dest: "{{ dotfiles_root }}"
+    delete: "{{ item.delete }}"
+  with_items:
+  - dir: zshrc.d
     delete: yes
+  - dir: bin
+    delete: no

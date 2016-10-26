@@ -1,0 +1,3 @@
+---
+- name: zreload
+  shell: "{{ dotfiles_bin}}/zreload"

@@ -1,7 +1,11 @@
 #!/bin/zsh
 
 source {{ dotfiles_root | replace('~', '$HOME') }}/zshrc.before
-source {{ zplug_home }}/init.zsh
+
+export ZPLUG_HOME="{{ zplug_home }}"
+source $ZPLUG_HOME/init.zsh
+
+zplug "zplug/zplug"
 
 # prezto
 zplug "sorin-ionescu/prezto", use:"init.zsh", nice:-20
@@ -20,6 +24,7 @@ zplug "sharat87/zsh-vim-mode"
 zplug "zsh-users/zsh-history-substring-search", nice:9
 zplug "zsh-users/zsh-syntax-highlighting", nice:10
 zplug "clvv/fasd", use:"fasd", as:plugin
+zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf
 
 # completions
 zplug "docker/docker", use:"contrib/completion/zsh", depth:1
@@ -32,6 +37,13 @@ zplug "sindresorhus/pure", nice:9
 # local
 zplug "{{ zsh_modules_dir }}", use:"*.zsh", from:local
 
-zplug load --verbose
+if ! zplug check; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+zplug load
 
 source {{ dotfiles_root | replace('~', '$HOME') }}/zshrc.after
