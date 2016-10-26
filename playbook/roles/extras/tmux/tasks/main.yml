@@ -17,5 +17,6 @@
   lineinfile:
     name: ~/.zshenv
     line: export ZSH_TMUX_AUTOSTART={{ tmux_autostart | lower}}
+    regexp: ^export ZSH_TMUX_AUTOSTART 
     state: present
     create: yes

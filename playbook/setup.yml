@@ -2,12 +2,10 @@
 - hosts: all
   roles:
   - zsh
-  - zgen
   - git
   - vim
   - extras/utils
   - extras/tmux
-  - extras/fasd
   - extras/wakatime
 
 - hosts: local

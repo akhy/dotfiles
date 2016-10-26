@@ -1,2 +1,3 @@
 ---
-zsh_modules_dir: "{{ dotfiles_root }}/zsh.d"
+zsh_modules_dir: "{{ dotfiles_root }}/zshrc.d"
+zplug_home: "{{ dotfiles_tools }}/zplug"

@@ -1,16 +1,21 @@
 ---
 - include: install_{{ ansible_os_family | lower }}.yml
 
-- name: zsh.d
+- name: modules dir
   file: path={{ zsh_modules_dir }} state=directory recurse=yes
 
-- name: zsh.d placeholder
-  copy: dest={{ zsh_modules_dir }}/_.zsh content=''
+- name: zplug repo
+  git:
+    repo: https://github.com/zplug/zplug
+    dest: "{{ zplug_home }}"
+    version: master
+    update: no
 
 - name: zshrc
   template:
-    src: zshrc
-    dest: "{{ dotfiles_root }}/zshrc"
+    src: "{{ item | basename }}"
+    dest: "{{ dotfiles_root }}/{{ item | basename }}"
+  with_fileglob: templates/zshrc*
 
 - name: zshrc loader
   lineinfile:
@@ -19,13 +24,8 @@
     state: present
     create: yes
 
-- name: zpreztorc
-  copy:
-    content: zstyle ':prezto:module:prompt' theme '{{ prezto_theme }}'
-    dest: "{{ dotfiles_root }}/zpreztorc"
-
-- name: zpreztorc symlink
-  file:
-    src: "{{ dotfiles_root }}/zpreztorc"
-    dest: ~/.zpreztorc
-    state: link
+- name: zshrc.d
+  synchronize:
+    src: zshrc.d
+    dest: "{{ dotfiles_root }}"
+    delete: yes
