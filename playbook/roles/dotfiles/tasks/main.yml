@@ -8,4 +8,4 @@
   file: path={{ item }} state=directory recurse=yes
   with_items:
   - "{{ dotfiles_root }}"
-  - "{{ dotfiles_root }}/bin"
+  - "{{ dotfiles_bin }}"
