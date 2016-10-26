@@ -1,2 +1,0 @@
----
-fasd_dir: "{{ dotfiles_tools }}/fasd"

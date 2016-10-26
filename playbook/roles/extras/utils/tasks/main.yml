@@ -2,7 +2,3 @@
 
 - name: util packages
   include: install_{{ ansible_os_family | lower }}.yml
-
-- name: util aliases
-  copy: src=files/aliases.zsh dest={{ zsh_modules_dir }}
-  when: zsh_modules_dir is defined
