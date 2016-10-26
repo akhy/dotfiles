@@ -1,6 +1,6 @@
-# DOTFILES
+# akhy's dotfiles
 
-> my dotfiles collection
+![powered by ansible](https://img.shields.io/badge/provisioning-ansible-blue.svg?style=flat-square) ![powered by zplug](https://img.shields.io/badge/zsh-zplug-magenta.svg?style=flat-square)
 
 ## ansible - `./playbook`
 
