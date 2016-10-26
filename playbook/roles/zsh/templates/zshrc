@@ -24,6 +24,7 @@ zplug "sharat87/zsh-vim-mode"
 zplug "zsh-users/zsh-history-substring-search", nice:9
 zplug "zsh-users/zsh-syntax-highlighting", nice:10
 zplug "clvv/fasd", use:"fasd", as:plugin
+zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf
 
 # completions
 zplug "docker/docker", use:"contrib/completion/zsh", depth:1
