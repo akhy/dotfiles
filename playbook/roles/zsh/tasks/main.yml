@@ -24,7 +24,7 @@
     state: present
     create: yes
 
-- name: sync {{ item.dir }}
+- name: sync files
   synchronize:
     src: "{{ item.dir }}"
     dest: "{{ dotfiles_root }}"
