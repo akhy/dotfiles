@@ -42,6 +42,7 @@
     dest: "{{ vimperator_plugins_dir }}/{{ item.name }}"
     version: master
     update: no
+    depth: 1
   with_items: "{{ vimperator_plugins }}"
   when: item.git_url is defined
 
