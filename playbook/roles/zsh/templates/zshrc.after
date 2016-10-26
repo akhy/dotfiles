@@ -4,10 +4,15 @@ eval "$(fasd --init auto)"
 
 rbenv() {
     eval "$(command rbenv init -)"
-    rbenv "$@"
+    command rbenv "$@"
 }
 
 pyenv() {
     eval "$(command pyenv init -)"
-    pyenv "$@"
+    command pyenv "$@"
+}
+
+nodenv() {
+    eval "$(command nodenv init -)"
+    command nodenv "$@"
 }

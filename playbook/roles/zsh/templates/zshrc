@@ -17,14 +17,26 @@ zplug "sorin-ionescu/prezto", use:"modules/tmux"
 zplug "sorin-ionescu/prezto", use:"modules/terminal"
 zplug "sorin-ionescu/prezto", use:"modules/homebrew", if:"[[ $OSTYPE == *darwin* ]]"
 
-# utils
-zplug "willghatch/zsh-saneopt", nice:-20
-zplug "supercrabtree/k", nice:10
+# essentials
 zplug "sharat87/zsh-vim-mode"
+zplug "willghatch/zsh-saneopt", nice:-20
 zplug "zsh-users/zsh-history-substring-search", nice:9
 zplug "zsh-users/zsh-syntax-highlighting", nice:10
+
+# utils
+zplug "supercrabtree/k", nice:10
 zplug "clvv/fasd", use:"fasd", as:plugin
 zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf
+
+# version managers
+## ruby
+zplug "rbenv/ruby-build", use:"bin/*", as:command
+zplug "rbenv/rbenv", use:"bin/rbenv", as:command
+## python
+zplug "yyuu/pyenv", use:"**/bin/*", as:command
+## nodejs
+zplug "nodenv/node-build", use:"bin/*", as:command
+zplug "nodenv/nodenv", use:"bin/nodenv", as:command
 
 # completions
 zplug "docker/docker", use:"contrib/completion/zsh", depth:1
