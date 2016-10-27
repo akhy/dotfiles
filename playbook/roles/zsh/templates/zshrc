@@ -1,29 +1,24 @@
 #!/bin/zsh
 
-source {{ dotfiles_root | replace('~', '$HOME') }}/zshrc.before
+source {{ dotfiles_root }}/zshrc.before
 
 export ZPLUG_HOME="{{ zplug_home }}"
 source $ZPLUG_HOME/init.zsh
 
 zplug "zplug/zplug"
 
-# prezto
-zplug "sorin-ionescu/prezto", use:"init.zsh", nice:-20
-zplug "sorin-ionescu/prezto", use:"modules/environment"
-zplug "sorin-ionescu/prezto", use:"modules/history"
-zplug "sorin-ionescu/prezto", use:"modules/utility"
-zplug "sorin-ionescu/prezto", use:"modules/editor"
-zplug "sorin-ionescu/prezto", use:"modules/tmux"
-zplug "sorin-ionescu/prezto", use:"modules/terminal"
-zplug "sorin-ionescu/prezto", use:"modules/homebrew", if:"[[ $OSTYPE == *darwin* ]]"
-
 # essentials
+zplug "sorin-ionescu/prezto", use:"modules/environment/*.zsh"
+zplug "sorin-ionescu/prezto", use:"modules/history/*.zsh"
+zplug "sorin-ionescu/prezto", use:"modules/editor/*.zsh"
+zplug "sorin-ionescu/prezto", use:"modules/terminal/*.zsh"
+zplug "sorin-ionescu/prezto", use:"modules/tmux/*.zsh"
 zplug "sharat87/zsh-vim-mode"
 zplug "willghatch/zsh-saneopt", nice:-20
 zplug "zsh-users/zsh-history-substring-search", nice:9
 zplug "zsh-users/zsh-syntax-highlighting", nice:10
 
-# utils
+# utility commands
 zplug "supercrabtree/k", nice:10
 zplug "clvv/fasd", use:"fasd", as:plugin
 zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf
@@ -58,4 +53,4 @@ fi
 
 zplug load
 
-source {{ dotfiles_root | replace('~', '$HOME') }}/zshrc.after
+source {{ dotfiles_root }}/zshrc.after

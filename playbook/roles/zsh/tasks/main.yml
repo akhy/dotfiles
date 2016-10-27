@@ -20,7 +20,7 @@
 - name: zshrc loader
   lineinfile:
     name: ~/.zshrc
-    line: source {{ dotfiles_root | replace('~', '$HOME') }}/zshrc
+    line: source {{ dotfiles_root }}/zshrc
     state: present
     create: yes
 
