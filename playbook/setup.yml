@@ -8,6 +8,7 @@
   - extras/tmux
   - extras/wakatime
   - extras/wget
+  - extras/tig
 
 - hosts: local
   roles:

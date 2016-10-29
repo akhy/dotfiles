@@ -1,0 +1,9 @@
+---
+- name: install package
+  include: install_{{ ansible_os_family | lower }}.yml
+
+- name: .tigrc
+  copy: src=tigrc dest={{ dotfiles_root }}/tigrc
+
+- name: .tigrc symlink
+  file: src={{ dotfiles_root }}/tigrc dest=~/.tigrc state=link
