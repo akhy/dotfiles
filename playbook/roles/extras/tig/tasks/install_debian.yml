@@ -1,0 +1,3 @@
+- name: install packages
+  become: yes
+  apt: name=tig state=present

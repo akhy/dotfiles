@@ -1,4 +1,3 @@
 ---
-
 - name: util packages
   include: install_{{ ansible_os_family | lower }}.yml
