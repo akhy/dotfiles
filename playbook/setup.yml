@@ -10,4 +10,5 @@
 
 - hosts: local
   roles:
+  - extras/github
   - extras/vimperator
