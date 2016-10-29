@@ -10,5 +10,6 @@
 
 - hosts: local
   roles:
+  - dev/ruby
   - extras/github
   - extras/vimperator
