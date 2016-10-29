@@ -10,4 +10,5 @@
 
 - hosts: local
   roles:
+  - dev/ruby
   - extras/vimperator
