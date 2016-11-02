@@ -1,6 +1,7 @@
 ---
 
 - include: install_{{ ansible_os_family | lower }}.yml
+  tags: install
 
 - name: config file
   copy:
@@ -17,6 +18,6 @@
   lineinfile:
     name: ~/.zshenv
     line: export ZSH_TMUX_AUTOSTART={{ tmux_autostart | lower}}
-    regexp: ^export ZSH_TMUX_AUTOSTART 
+    regexp: ^export ZSH_TMUX_AUTOSTART
     state: present
     create: yes

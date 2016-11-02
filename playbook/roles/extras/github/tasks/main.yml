@@ -1,5 +1,6 @@
 ---
 - include: install_{{ ansible_os_family | lower }}.yml
+  tags: install
 
 - name: hub config
   template: src=hub.yml dest={{ dotfiles_root }}/hub.yml

@@ -1,6 +1,7 @@
 ---
 - name: install package
   include: install_{{ ansible_os_family | lower }}.yml
+  tags: install
 
 - name: .tigrc
   copy: src=tigrc dest={{ dotfiles_root }}/tigrc

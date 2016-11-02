@@ -1,5 +1,6 @@
 ---
 - include: install_{{ ansible_os_family | lower }}.yml
+  tags: install
 
 - name: modules dir
   file: path={{ zsh_modules_dir }} state=directory recurse=yes
