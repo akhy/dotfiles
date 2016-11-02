@@ -28,7 +28,7 @@
   - name: alias.lp
     value: 'log --patch-with-stat'
 
-  - name: alias.mff
+  - name: alias.mffo
     value: 'merge --ff-only'
   - name: alias.mnff
     value: 'merge --no-ff'
