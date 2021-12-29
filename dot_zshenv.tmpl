@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+
+export LC_ALL="en_US.UTF-8"
+
+path+=("$HOME/.local/bin")
+
+export PATH
+
+case "$(uname -s)" in
+  Darwin)
+    export HOMEBREW_PREFIX=/usr/local
+    ;;
+  Linux)
+    export HOMEBREW_PREFIX=/home/linuxbrew/.linuxbrew
+    ;;
+esac
+export LD_LIBRARY_PATH="${HOMEBREW_PREFIX}/lib"
+
+if [ -f $HOME/.zshenv.local ]; then
+  source $HOME/.zshenv.local
+fi

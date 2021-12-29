@@ -1,0 +1,64 @@
+#!/usr/bin/env zsh
+export ZPLUG_HOME=$HOME/.zplug
+source $ZPLUG_HOME/init.zsh
+zmodload zsh/zprof
+
+
+# PREZTO
+zplug "sorin-ionescu/prezto", \
+  use:"init.zsh", \
+  hook-build:"ln -s $ZPLUG_HOME/repos/sorin-ionescu/prezto ~/.zprezto"
+zstyle ':prezto:*:*' color 'yes'
+zstyle ':prezto:load' pmodule \
+  'environment' \
+  'terminal' \
+  'editor' \
+  'history' \
+  'directory' \
+  'spectrum' \
+  'utility' \
+  'fasd' \
+  'completion' \
+  'syntax-highlighting' \
+  'history-substring-search' \
+  'autosuggestions' \
+  'prompt'
+RPROMPT='%(?.%F{magenta}.%F{red})${editor_info[keymap]}'
+zstyle ':prezto:module:editor' key-bindings 'vi'
+zstyle ':prezto:module:editor:info:keymap:alternate' format '❮❮❮'
+zstyle ':prezto:module:prompt' theme 'pure'
+zstyle ':prezto:module:terminal' auto-title 'yes'
+zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
+zstyle ':prezto:module:terminal:tab-title' format '%m: %s'
+
+zplug "zplug/zplug"
+zplug "Tarrasch/zsh-bd"
+zplug "wbinglee/zsh-wakatime"
+zplug load
+
+
+# EDITOR
+export EDITOR='nvim'
+export VISUAL='nvim'
+alias vim=nvim
+
+# BREW
+eval $($HOMEBREW_PREFIX/bin/brew shellenv)
+
+# FASD
+eval "$(fasd --init auto)"
+
+# ASDF
+source $(brew --prefix asdf)/asdf.sh
+
+# ALIASES/HELPERS
+alias git=hub
+alias k=kubectl
+gcleanbranch() {
+  branch=${1:-master}
+  \git branch --merged $branch --format '%(refname:short)' | grep -vF $branch | xargs git branch -d
+}
+
+if [ -f $HOME/.zshrc.local ]; then
+  source $HOME/.zshrc.local
+fi

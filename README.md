@@ -1,1 +1,3 @@
 # dotfiles
+
+chezmoi-managed dotfiles
