@@ -3,17 +3,13 @@
 export LC_ALL="en_US.UTF-8"
 
 path+=("$HOME/.local/bin")
-
 export PATH
 
-case "$(uname -s)" in
-  Darwin)
-    export HOMEBREW_PREFIX=/usr/local
-    ;;
-  Linux)
-    export HOMEBREW_PREFIX=/home/linuxbrew/.linuxbrew
-    ;;
-esac
+{{- if eq .chezmoi.os "linux" }}
+export HOMEBREW_PREFIX=/home/linuxbrew/.linuxbrew
+{{- else if eq .chezmoi.os "darwin" }}
+export HOMEBREW_PREFIX=/usr/local
+{{- end }}
 export LD_LIBRARY_PATH="${HOMEBREW_PREFIX}/lib"
 
 if [ -f $HOME/.zshenv.local ]; then
