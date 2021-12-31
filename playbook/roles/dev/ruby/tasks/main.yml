@@ -1,5 +1,0 @@
----
-- name: .gemrc
-  copy: src=gemrc dest={{ dotfiles_root }}/gemrc
-- name: .gemrc symlink
-  file: src={{ dotfiles_root }}/gemrc dest=~/.gemrc state=link

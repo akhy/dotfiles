@@ -1,4 +1,0 @@
----
-zsh_set_default: no
-zsh_bin: /usr/bin/zsh
-prezto_theme: pure

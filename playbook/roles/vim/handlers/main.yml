@@ -1,3 +1,0 @@
----
-- name: plug install
-  shell: vim -E -s -c "source ~/.vimrc" +PlugInstall -c qa

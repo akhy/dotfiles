@@ -1,9 +1,0 @@
----
-- name: plugin links {{ plugin_dir }}
-  file:
-    src: "{{ vimperator_plugins_dir }}/{{ plugin_dir }}/{{ plugin_file }}"
-    dest: "~/.vimperator/plugin/{{ plugin_file }}"
-    state: link
-  loop_control:
-    loop_var: plugin_file
-  with_items: "{{ plugin_files }}"

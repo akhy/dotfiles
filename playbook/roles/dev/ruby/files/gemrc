@@ -1,5 +1,0 @@
----
-gem: --no-ri --no-rdoc
-benchmark: false
-verbose: true
-update_sources: true

@@ -1,3 +1,0 @@
----
-dotfiles_reset: false
-dotfiles_root: "{{ ansible_env.HOME }}/.dotfiles"

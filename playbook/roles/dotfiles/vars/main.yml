@@ -1,2 +1,0 @@
----
-dotfiles_bin: "{{ dotfiles_root }}/bin"

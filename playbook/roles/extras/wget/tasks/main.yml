@@ -1,6 +1,0 @@
----
-- name: .wgetrc
-  copy: src=wgetrc dest={{ dotfiles_root }}/wgetrc
-
-- name: .wgetrc symlink
-  file: src={{ dotfiles_root }}/wgetrc dest=~/.wgetrc state=link

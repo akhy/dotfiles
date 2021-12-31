@@ -1,8 +1,0 @@
----
-- name: dotfiles
-  copy: src={{ item }} dest={{ dotfiles_root }}/{{ item|basename }}
-  with_fileglob: files/*
-
-- name: dotfiles symlink
-  file: src={{ dotfiles_root }}/{{ item|basename }} dest=~/.{{ item|basename }} state=link
-  with_fileglob: files/*

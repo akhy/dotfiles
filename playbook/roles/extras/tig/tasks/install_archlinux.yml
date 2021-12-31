@@ -1,3 +1,0 @@
-- name: install packages
-  become: yes
-  pacman: name=tig state=present

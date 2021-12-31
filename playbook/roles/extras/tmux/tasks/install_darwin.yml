@@ -1,3 +1,0 @@
----
-- name: package install
-  homebrew: name=tmux state=present

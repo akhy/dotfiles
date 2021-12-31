@@ -1,3 +1,0 @@
----
-- name: install packages
-  homebrew: name=tig state=present
