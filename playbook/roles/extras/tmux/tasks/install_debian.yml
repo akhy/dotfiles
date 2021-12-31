@@ -1,0 +1,12 @@
+---
+- name: ppa present
+  become: yes
+  apt_repository: repo=ppa:pi-rho/dev state=present
+- name: package present
+  become: yes
+  apt: name=tmux-next state=present
+- name: tmux-next bin
+  copy:
+    content: tmux-next "$@"
+    dest: "{{ dotfiles_bin }}/tmux"
+    mode: a+x

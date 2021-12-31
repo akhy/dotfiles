@@ -1,0 +1,56 @@
+#!/bin/zsh
+
+source {{ dotfiles_root }}/zshrc.before
+
+export ZPLUG_HOME="{{ zplug_home }}"
+source $ZPLUG_HOME/init.zsh
+
+zplug "zplug/zplug"
+
+# essentials
+zplug "sorin-ionescu/prezto", use:"modules/environment/*.zsh"
+zplug "sorin-ionescu/prezto", use:"modules/history/*.zsh"
+zplug "sorin-ionescu/prezto", use:"modules/editor/*.zsh"
+zplug "sorin-ionescu/prezto", use:"modules/terminal/*.zsh"
+zplug "sorin-ionescu/prezto", use:"modules/tmux/*.zsh"
+zplug "sharat87/zsh-vim-mode"
+zplug "willghatch/zsh-saneopt", nice:-20
+zplug "zsh-users/zsh-history-substring-search", nice:9
+zplug "zsh-users/zsh-syntax-highlighting", nice:10
+
+# utility commands
+zplug "supercrabtree/k", nice:10
+zplug "clvv/fasd", use:"fasd", as:plugin
+zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf
+
+# version managers
+## ruby
+zplug "rbenv/ruby-build", use:"bin/*", as:command
+zplug "rbenv/rbenv", use:"bin/rbenv", as:command
+## python
+zplug "yyuu/pyenv", use:"**/bin/*", as:command
+## nodejs
+zplug "nodenv/node-build", use:"bin/*", as:command
+zplug "nodenv/nodenv", use:"bin/nodenv", as:command
+
+# completions
+zplug "docker/docker", use:"contrib/completion/zsh", depth:1
+zplug "zsh-users/zsh-completions", nice:9
+
+# theme
+zplug "mafredri/zsh-async", nice:8
+zplug "sindresorhus/pure", nice:9
+
+# local
+zplug "{{ zsh_modules_dir }}", use:"*.zsh", from:local
+
+if ! zplug check; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+zplug load
+
+source {{ dotfiles_root }}/zshrc.after

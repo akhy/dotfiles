@@ -1,0 +1,18 @@
+#!/bin/zsh
+
+eval "$(fasd --init auto)"
+
+rbenv() {
+    eval "$(command rbenv init -)"
+    command rbenv "$@"
+}
+
+pyenv() {
+    eval "$(command pyenv init -)"
+    command pyenv "$@"
+}
+
+nodenv() {
+    eval "$(command nodenv init -)"
+    command nodenv "$@"
+}

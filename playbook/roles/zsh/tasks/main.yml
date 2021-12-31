@@ -1,0 +1,37 @@
+---
+- include: install_{{ ansible_os_family | lower }}.yml
+  tags: install
+
+- name: modules dir
+  file: path={{ zsh_modules_dir }} state=directory recurse=yes
+
+- name: zplug repo
+  git:
+    repo: https://github.com/zplug/zplug
+    dest: "{{ zplug_home }}"
+    version: master
+    update: no
+
+- name: zshrc
+  template:
+    src: "{{ item | basename }}"
+    dest: "{{ dotfiles_root }}/{{ item | basename }}"
+  with_fileglob: templates/zshrc*
+
+- name: zshrc loader
+  lineinfile:
+    name: ~/.zshrc
+    line: source {{ dotfiles_root }}/zshrc
+    state: present
+    create: yes
+
+- name: sync files
+  synchronize:
+    src: "{{ item.dir }}"
+    dest: "{{ dotfiles_root }}"
+    delete: "{{ item.delete }}"
+  with_items:
+  - dir: zshrc.d
+    delete: yes
+  - dir: bin
+    delete: no

@@ -1,0 +1,18 @@
+---
+- hosts: all
+  roles:
+  - zsh
+  - git
+  - vim
+  - extras/utils
+  - extras/tmux
+  - extras/wakatime
+  - extras/wget
+  - extras/tig
+
+- hosts: local
+  roles:
+  - dev/local
+  - dev/ruby
+  - extras/github
+  - extras/vimperator

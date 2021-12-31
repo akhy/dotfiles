@@ -1,0 +1,23 @@
+---
+
+- include: install_{{ ansible_os_family | lower }}.yml
+  tags: install
+
+- name: config file
+  copy:
+    src: files/tmux.conf
+    dest: "{{ dotfiles_root }}/tmux.conf"
+
+- name: config link
+  file:
+    src: "{{ dotfiles_root }}/tmux.conf"
+    dest: ~/.tmux.conf
+    state: link
+
+- name: autostart
+  lineinfile:
+    name: ~/.zshenv
+    line: export ZSH_TMUX_AUTOSTART={{ tmux_autostart | lower}}
+    regexp: ^export ZSH_TMUX_AUTOSTART
+    state: present
+    create: yes
