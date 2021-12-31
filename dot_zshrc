@@ -1,8 +1,5 @@
 #!/usr/bin/env zsh
 
-# zplug "Tarrasch/zsh-bd"
-# zplug "wbinglee/zsh-wakatime"
-
 source "$HOME/.zprezto/init.zsh"
 
 for f in $HOME/.zshrc.d/*.zsh; do

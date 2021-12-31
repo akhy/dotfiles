@@ -1,0 +1,4 @@
+'.zshrc.d/bd.zsh':
+  type: file
+  url: https://raw.githubusercontent.com/Tarrasch/zsh-bd/master/bd.zsh
+  refreshPeriod: 168h
