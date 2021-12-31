@@ -1,0 +1,25 @@
+zstyle ':prezto:*:*' case-sensitive 'no'
+
+zstyle ':prezto:*:*' color 'yes'
+zstyle ':prezto:load' pmodule \
+  'environment' \
+  'terminal' \
+  'editor' \
+  'history' \
+  'directory' \
+  'spectrum' \
+  'utility' \
+  'completion' \
+  'fasd' \
+  'syntax-highlighting' \
+  'history-substring-search' \
+  'autosuggestions' \
+  'prompt'
+RPROMPT='%(?.%F{magenta}.%F{red})${editor_info[keymap]}'
+
+zstyle ':prezto:module:editor' key-bindings 'vi'
+zstyle ':prezto:module:editor:info:keymap:alternate' format '❮❮❮'
+zstyle ':prezto:module:prompt' theme 'pure'
+zstyle ':prezto:module:terminal' auto-title 'yes'
+zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
+zstyle ':prezto:module:terminal:tab-title' format '%m: %s'
