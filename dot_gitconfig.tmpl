@@ -1,0 +1,39 @@
+[color]
+	ui = auto
+
+[pretty]
+	nice = "%C(yellow)%h%C(reset) %C(white)%s%C(cyan)%d%C(reset) -- %an; %ar"
+
+[alias]
+	lo = log --pretty=nice
+	b = branch
+	ba = branch -a
+	ci = commit
+	co = checkout
+	d = diff
+	dc = diff --cached
+	fp = format-patch
+	g = !git gui &
+	gr = log --graph
+	go = log --graph --pretty=oneline --abbrev-commit
+	k = !gitk &
+	ka = !gitk --all &
+	lc = log ORIG_HEAD.. --stat --no-merges
+	lp = log --patch-with-stat
+	mnff = merge --no-ff
+	mt = mergetool
+	p = format-patch -1
+	serve = !git daemon --reuseaddr --verbose  --base-path=. --export-all ./.git
+	sra = svn rebase --all
+	sh = !git-sh
+	st = status
+	stm = status --untracked=no
+	stfu = status --untracked=no
+	pullsrb = !git stash save && git pull --rebase && git stash pop && echo \\\"Success!\\\"
+	mffo = merge --ff-only
+	personal = config user.email akhy@chickenzord.com
+	work = config user.email akhyar.amarullah@go-jek.com
+
+[user]
+	name = {{ dig "git" "name" .name . }}
+	email = {{ dig "git" "name" .email . }}
