@@ -1,0 +1,7 @@
+{{- $username := (dig "github" "username" "" .) }}
+{{- if (ne $username "" )}}
+github.com:
+- user: {{ $username }}
+  oauth_token: {{ gopass (printf "github/%s/oauth_token" $username) }}
+  protocol: https
+{{- end}}
