@@ -34,6 +34,23 @@
 	personal = config user.email akhy@chickenzord.com
 	work = config user.email akhyar.amarullah@go-jek.com
 
+{{- $gpgCommand := (dig "gpg" "command" "gpg2" .) }}
+{{- $gpgKeyID := (dig "gpg" "key_id" "" .) }}
+{{- $gpgAutoSign := (dig "gpg" "autosign" false .) }}
+
 [user]
 	name = {{ dig "git" "name" .name . }}
 	email = {{ dig "git" "name" .email . }}
+{{- if (ne $gpgKeyID "")}}
+	signingkey = {{ $gpgKeyID }}
+{{- end }}
+
+[commit]
+{{- if $gpgAutoSign }}
+	gpgsign = true
+{{- end }}
+
+[gpg]
+{{- if (ne $gpgCommand "") }}
+	program = {{ $gpgCommand }}
+{{- end }}
