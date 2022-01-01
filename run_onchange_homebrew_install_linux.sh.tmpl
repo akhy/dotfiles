@@ -7,15 +7,18 @@ set -eufo pipefail
 brew bundle --no-lock --no-upgrade --file=/dev/stdin <<EOF
 
 brew "asdf"
-brew "bitwarden-cli"
 brew "fasd"
 brew "fzf"
 brew "hub"
+brew "ncdu"
 brew "neofetch"
 brew "neovim"
 brew "rsync"
 brew "tig"
 brew "tree"
+
+brew "bitwarden-cli"
+brew "wakatime-cli"
 
 EOF
 
