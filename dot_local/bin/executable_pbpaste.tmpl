@@ -1,0 +1,13 @@
+#!/bin/bash
+
+{{ if (eq .chezmoi.os "linux") }}
+{{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+powershell.exe Get-Clipboard | sed 's/\r$//' | sed -z '$ s/\n$//'
+exit 0
+{{   else }}
+exec xclip -selection clipboard -o $@
+{{   end }}
+{{ else if (eq .chezmoi.os "darwin") }}
+exec pbpaste
+{{ end }}
+

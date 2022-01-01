@@ -1,0 +1,56 @@
+#!/bin/bash
+
+config_dir=$HOME/.kube/configs
+bin=$(basename $0)
+
+_list_contexts() {
+    for f in $config_dir/*.yaml; do
+        basename=$(basename $f)
+        echo "${basename%.*}"
+    done
+}
+
+_generate() {
+    echo "Generating kube context to ${config_dir}"
+    mkdir -p $config_dir
+
+    prev_ctx=$(kubectl config current-context)
+    for ctx in $(kubectl config get-contexts -o name); do
+        kubectl config use-context $ctx
+        kubectl config view --minify --flatten > "${config_dir}/${ctx}.yaml"
+    done
+
+    echo "Switching back to previous context"
+    kubectl config use-context $prev_ctx
+}
+
+_pick() {
+    ctx=$1
+    if [ "$ctx" == "" ]; then
+        ctx=$(_list_contexts | fzf --exit-0)
+    fi
+
+    if [[ "$ctx" == "" || "$ctx" == '*' ]]; then
+        >&2 echo "# No context selected"
+        exit 0
+    fi
+
+    kubeconfig="$(realpath $config_dir)/${ctx}.yaml"
+    if [ ! -f $kubeconfig ]; then
+        >&2 echo "# Kubeconfig not found: ${kubeconfig}"
+        exit 0
+    fi
+
+    echo "# this command output is meant to be eval'd by your shell"
+    echo "# run: eval \"\$($bin)\""
+    echo
+    echo "export KUBECONFIG='${kubeconfig}'"
+}
+
+if [ "$1" == "--generate" ]; then
+    _generate
+else
+    _pick $1
+fi
+
+
