@@ -4,7 +4,7 @@ set -eufo pipefail
 
 {{- if (eq .chezmoi.os "linux") }}
 
-brew bundle --no-lock --file=/dev/stdin <<EOF
+brew bundle --no-lock --no-upgrade --file=/dev/stdin <<EOF
 
 brew "asdf"
 brew "bitwarden-cli"
