@@ -7,5 +7,7 @@ exit 0
 {{   else }}
 exec xclip -selection clipboard $@
 {{   end }}
+{{ else if (eq .chezmoi.os "darwin") }}
+exec pbcopy $@
 {{ end }}
 
