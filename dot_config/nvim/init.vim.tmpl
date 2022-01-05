@@ -1,0 +1,49 @@
+
+call plug#begin('~/.config/nvim/plugged')
+    let g:plug_threads = 4
+    let g:plug_timeout = 3600
+
+    "interface"
+    "Plug 'morhetz/gruvbox'
+    Plug 'markvincze/panda-vim'
+    Plug 'airblade/vim-gitgutter'
+    Plug 'scrooloose/nerdtree'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+
+    "misc"
+    Plug 'wakatime/vim-wakatime'
+
+    "editing"
+    Plug 'editorconfig/editorconfig-vim'
+    Plug 'tpope/vim-surround'
+call plug#end()
+
+"interface"
+color panda
+set number
+set background=dark
+"let g:gruvbox_contrast_dark = 'hard'
+let g:airline_theme = 'bubblegum'
+
+
+"paste-mode"
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+
+" " essentials
+" Plug 'kien/ctrlp.vim'
+" Plug 'Lokaltog/vim-easymotion'
+" Plug 'nathanaelkane/vim-indent-guides'
+
+
+" " airline
+" let g:ctrlp_map = '<c-p>'
+" let g:ctrlp_cmd = 'CtrlP'
+" let g:airline_extensions = [  ]
+" let g:airline_left_sep = ""
+" let g:airline_right_sep = ""
+" let g:airline_left_alt_sep = ""
+" let g:airline_right_alt_sep = ""
