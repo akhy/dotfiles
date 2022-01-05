@@ -1,3 +1,8 @@
 README.md
 _stash/
 TODO
+
+{{- if (ne .chezmoi.os "android") }}
+.termux/
+.termux/**
+{{- end }}

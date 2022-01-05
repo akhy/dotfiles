@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "dot_vimrc": "viml"
+        "dot_vimrc": "viml",
+        "*.tmpl": "go-template",
+        ".chezmoiignore": "go-template"
     }
 }
