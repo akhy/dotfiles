@@ -1,6 +1,9 @@
 [core]
 	excludesFile = ~/.gitignore
 
+[init]
+	defaultBranch = master
+
 [color]
 	ui = auto
 
@@ -34,8 +37,6 @@
 	stfu = status --untracked=no
 	pullsrb = !git stash save && git pull --rebase && git stash pop && echo \\\"Success!\\\"
 	mffo = merge --ff-only
-	personal = config user.email akhy@chickenzord.com
-	work = config user.email akhyar.amarullah@go-jek.com
 
 {{- $gpgCommand := (dig "gpg" "command" "gpg2" .) }}
 {{- $gpgKeyID := (dig "gpg" "key_id" "" .) }}
@@ -57,3 +58,6 @@
 {{- if (ne $gpgCommand "") }}
 	program = {{ $gpgCommand }}
 {{- end }}
+
+[http "https://gopkg.in"]
+	followRedirects = true
