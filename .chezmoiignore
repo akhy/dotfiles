@@ -6,3 +6,8 @@ TODO
 .termux/
 .termux/**
 {{- end }}
+
+{{- if (eq .chezmoi.os "darwin") }}
+.local/bin/pbcopy
+.local/bin/pbpaste
+{{- end }}
