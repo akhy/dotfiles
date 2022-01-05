@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eo pipefail
+
 config_dir=$HOME/.kube/configs
 bin=$(basename $0)
 
@@ -10,14 +12,27 @@ _list_contexts() {
     done
 }
 
-_generate() {
-    echo "Generating kube context to ${config_dir}"
-    mkdir -p $config_dir
+__generate() {
+    ctx=$1
 
+    mkdir -p $config_dir
+    kubectl config use-context $ctx
+    kubectl config view --minify --flatten > "${config_dir}/${ctx}.yaml"
+}
+
+_generate_one() {
     prev_ctx=$(kubectl config current-context)
+    __generate $1
+
+    echo "Switching back to previous context"
+    kubectl config use-context $prev_ctx
+}
+
+_generate_all() {
+    prev_ctx=$(kubectl config current-context)
+
     for ctx in $(kubectl config get-contexts -o name); do
-        kubectl config use-context $ctx
-        kubectl config view --minify --flatten > "${config_dir}/${ctx}.yaml"
+        __generate $ctx
     done
 
     echo "Switching back to previous context"
@@ -48,7 +63,17 @@ _pick() {
 }
 
 if [ "$1" == "--generate" ]; then
-    _generate
+    ctx=$2
+    if [ "$ctx" == "" ]; then
+        echo "usage: $0 --generate [ctx]"
+        echo
+        echo "available contexts:"
+        kubectl config get-contexts -o name
+        exit 1
+    fi
+    _generate_one $2
+elif [ "$1" == "--generate-all" ]; then
+    _generate_all
 else
     _pick $1
 fi
