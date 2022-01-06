@@ -3,13 +3,19 @@ call plug#begin('~/.config/nvim/plugged')
     let g:plug_threads = 4
     let g:plug_timeout = 3600
 
-    "interface"
-    "Plug 'morhetz/gruvbox'
+    Plug 'tpope/vim-sensible'
+
+    "theme"
+    Plug 'morhetz/gruvbox'
+    Plug 'EdenEast/nightfox.nvim'
     Plug 'markvincze/panda-vim'
+
+    "interface"
     Plug 'airblade/vim-gitgutter'
     Plug 'scrooloose/nerdtree'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
+    Plug 'lukas-reineke/indent-blankline.nvim'
 
     "misc"
     Plug 'wakatime/vim-wakatime'
@@ -17,6 +23,18 @@ call plug#begin('~/.config/nvim/plugged')
     "editing"
     Plug 'editorconfig/editorconfig-vim'
     Plug 'tpope/vim-surround'
+
+    "types"
+    Plug 'vitalk/vim-shebang'
+    Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
+    Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+    Plug 'vim-scripts/groovy.vim', { 'for': 'groovy' }
+    Plug 'tfnico/vim-gradle', { 'for': 'groovy' }
+    Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+    Plug 'elzr/vim-json', { 'for': 'json' }
+    Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
+    Plug 'vim-scripts/nginx.vim', { 'for': 'nginx' }
+    Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 call plug#end()
 
 "interface"
