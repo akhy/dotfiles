@@ -1,3 +1,7 @@
 #!/usr/bin/env zsh
 
-eval $($HOMEBREW_PREFIX/bin/brew shellenv)
+if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+    autoload -Uz compinit
+    compinit
+fi
