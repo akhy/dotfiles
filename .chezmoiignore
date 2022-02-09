@@ -11,3 +11,8 @@ TODO
 .local/bin/pbcopy
 .local/bin/pbpaste
 {{- end }}
+
+{{- if (eq .chezmoi.hostname "Akhyar-Amarullah")}}
+.config/hub
+.wakatime.cfg
+{{- end }}
