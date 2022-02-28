@@ -64,5 +64,5 @@
 
 {{ range (split " " (dig "alt" "dirs" "" .)) }}
 [includeIf "gitdir:{{ . }}/"]
-    path = {{ . }}/.gitconfig-alt
+    path = ~/.gitconfig-alt
 {{ end }}
