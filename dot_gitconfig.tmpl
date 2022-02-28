@@ -44,7 +44,7 @@
 
 [user]
 	name = {{ dig "git" "name" .name . }}
-	email = {{ dig "git" "name" .email . }}
+	email = {{ dig "git" "email" .email . }}
 {{- if (ne $gpgKeyID "")}}
 	signingkey = {{ $gpgKeyID }}
 {{- end }}
@@ -61,3 +61,8 @@
 
 [http "https://gopkg.in"]
 	followRedirects = true
+
+{{ range (split " " (dig "alt" "dirs" "" .)) }}
+[includeIf "gitdir:{{ . }}/"]
+    path = {{ . }}/.gitconfig-alt
+{{ end }}

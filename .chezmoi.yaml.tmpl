@@ -12,6 +12,23 @@
 {{-   $email = promptString "email" -}}
 {{- end -}}
 
+{{- $altEmail := "" -}}
+{{- if .alt.email -}}
+{{-   $altEmail = .alt.email -}}
+{{- else -}}
+{{-   $altEmail = promptString "altEmail" -}}
+{{- end -}}
+
+{{- $altDirs := "" -}}
+{{- if .alt.dirs -}}
+{{-   $altDirs = .alt.dirs -}}
+{{- else -}}
+{{-   $altDirs = promptString "altDirs" -}}
+{{- end -}}
+
 data:
   name: {{ $name | quote }}
   email: {{ $email | quote }}
+  alt:
+    email: {{ $altEmail | quote }}
+    dirs: {{ $altDirs | quote }}
