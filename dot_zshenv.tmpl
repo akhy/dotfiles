@@ -18,4 +18,8 @@ eval $($HOMEBREW_PREFIX/bin/brew shellenv)
 
 export ZSH_WAKATIME_BIN=wakatime-cli
 
+{{- if eq .chezmoi.hostname "Akhyar-Amarullah" }}
+export CLOUDSDK_PYTHON_SITEPACKAGES=1
+{{- else }}
 export CLOUDSDK_PYTHON=python2
+{{- end }}
