@@ -1,0 +1,93 @@
+{
+    "title": "Keychron K2 on Mac",
+    "rules": [
+        {
+            "description": "change right_control to right_option",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "right_control",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "right_option"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "device_if",
+                            "identifiers": [
+                                {
+                                    "product_id": 591
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "exchange right_command and fn",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "right_command",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "fn"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "device_if",
+                            "identifiers": [
+                                {
+                                    "product_id": 591
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "fn",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "right_command"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "device_if",
+                            "identifiers": [
+                                {
+                                    "product_id": 591
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

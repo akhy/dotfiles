@@ -1,5 +1,6 @@
 README.md
 _stash/
+_ci/
 TODO
 
 {{- if (ne .chezmoi.os "android") }}
@@ -10,6 +11,9 @@ TODO
 {{- if (eq .chezmoi.os "darwin") }}
 .local/bin/pbcopy
 .local/bin/pbpaste
+{{- else }}
+.config/karabiner/karabiner.json
+.zshrc.d/mac_apps.zsh
 {{- end }}
 
 {{- if (eq .chezmoi.hostname "Akhyar-Amarullah")}}
