@@ -11,3 +11,6 @@ if type brew &>/dev/null; then
     autoload -Uz compinit
     compinit
 fi
+
+source "$(brew --prefix kube-ps1)/share/kube-ps1.sh"
+PS1='$(kube_ps1)'$PS1
