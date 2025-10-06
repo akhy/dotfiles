@@ -1,0 +1,5 @@
+theme = "Gruvbox Dark Hard"
+font-family = "FiraCode Nerd Font Mono"
+background-opacity = 1
+adjust-cell-height = 1
+adjust-cell-width = -1
